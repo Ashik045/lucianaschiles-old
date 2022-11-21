@@ -1,0 +1,14 @@
+.header {
+  margin-top: 80px;
+  .header_main {
+    width: 100%;
+    max-width: 1224px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .header_img {
+      object-fit: cover;
+      border-radius: 2px;
+    }
+  }
+}

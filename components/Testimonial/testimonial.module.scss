@@ -1,0 +1,29 @@
+.testimonial {
+  background-color: white;
+
+  .testimonial_main {
+    width: 100%;
+    max-width: 1224px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .testimonial_div {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      padding-bottom: 40px;
+
+      .testimonial_img {
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      p {
+        color: rgb(48, 47, 47);
+      }
+    }
+  }
+}

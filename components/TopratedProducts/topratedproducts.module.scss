@@ -1,0 +1,16 @@
+.toprated_products {
+  background-color: white;
+  .toprated_products_main {
+    width: 100%;
+    max-width: 1224px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+
+    .slide {
+      padding-bottom: 35px;
+    }
+  }
+}
