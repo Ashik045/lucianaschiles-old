@@ -1,0 +1,28 @@
+/* eslint-disable no-underscore-dangle */
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import styles from './blog.module.scss';
+
+function Blog({ blog }) {
+    return (
+        <div className={styles.blog_component}>
+            <Link href={`/blogs/${blog._id}`}>
+                <Image
+                    src={blog.image}
+                    className={styles.image}
+                    alt="web blogs"
+                    width={400}
+                    height={300}
+                    objectFit="cover"
+                />
+            </Link>
+            <Link href={`/blogs/${blog._id}`}>
+                <h2>{blog.title}</h2>
+            </Link>
+            <p>{blog.desc}</p>
+        </div>
+    );
+}
+
+export default Blog;

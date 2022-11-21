@@ -1,0 +1,34 @@
+.blog_component {
+  .image {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    object-fit: cover;
+    width: 100%;
+
+    &:hover {
+      scale: 1.03;
+    }
+  }
+
+  h2 {
+    color: #404258;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    margin-bottom: 0px;
+    padding: 0px 5px;
+    padding: 0px 5px;
+
+    &:hover {
+      //   color: #64ffda;
+    }
+  }
+
+  p {
+    color: gray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}

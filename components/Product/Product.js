@@ -22,6 +22,9 @@ function Product({ product, scale }) {
                 <h3 className={styles.productt_title}>{product.title}</h3>
             </Link>
             <p>{product.desc[0]}</p>
+            <span>
+                USD <b style={{ marginLeft: '4px' }}> {product.price}</b>
+            </span>
         </div>
     );
 }
