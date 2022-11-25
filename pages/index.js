@@ -2,6 +2,7 @@ import Head from 'next/head';
 import BlogComponent from '../components/BlogComponent/BlogComponent';
 import Header from '../components/Header/Header';
 import Navbar from '../components/Navbar/Navbar';
+import Newsletter from '../components/Newsletter/Newsletter';
 import Products from '../components/Products/Products';
 import Testimonial from '../components/Testimonial/Testimonial';
 import TopratedProducts from '../components/TopratedProducts/TopratedProducts';
@@ -169,6 +170,7 @@ export default function Home() {
                 <TopratedProducts products={products} />
                 <Testimonial />
                 <BlogComponent blogs={blogs} />
+                <Newsletter />
             </main>
         </div>
     );
