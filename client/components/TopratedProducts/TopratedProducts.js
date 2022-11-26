@@ -45,7 +45,7 @@ function TopratedProducts({ products }) {
                      modules={[Pagination, Navigation, Autoplay]}
                     className="mySwiper"
                 >
-                    {products.map((product) => (
+                    {products?.map((product) => (
                         <SwiperSlide key={product._id} className={styles.slide}>
                             <Product product={product} />
                         </SwiperSlide>

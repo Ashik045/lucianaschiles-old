@@ -1,4 +1,3 @@
-import axios from 'axios';
 import Head from 'next/head';
 import BlogComponent from '../components/BlogComponent/BlogComponent';
 import Footer from '../components/Footer/Footer';
@@ -153,6 +152,8 @@ const blogs = [
 ];
 
 export default function Home({ products }) {
+
+    // console.log(products);
     return (
         <div className="container">
             <Head>
@@ -176,13 +177,14 @@ export default function Home({ products }) {
 }
 
 export async function getStaticProps() {
-    const res = await axios.get('http://localhost:4000/api/products/all');
+    const res = await fetch('https://lucianaschiles-backend.onrender.com/api/products/all')
 
-    const data = res.data.message;
+    const data = await res.json();
 
+    const products = data.message;
     return {
-        props: {
-            products: data,
-        },
-    };
-}
+      props: {
+        products: products || null,
+      },
+    }
+}  

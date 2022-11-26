@@ -21,7 +21,7 @@ function Products({ products }) {
                 </div>
 
                 <div className={styles.all_products}>
-                    {products.map((product) => (
+                    {products?.map((product) => (
                         <Product key={product._id} product={product} scale  />
                     ))}
                 </div>
