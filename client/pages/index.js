@@ -142,7 +142,7 @@ const blogs = [
         image: blog5,
     },
     {
-        _id: 5,
+        _id: 6,
         title: 'Looking for a new way to add flavor to your food without sacrificing taste?',
         desc: [
             'This Simple Style Enamel Design Anklet is a stylish and elegant accessory for your feet. It is made of alloy material with enamel design in donut pattern. The anklet is simple yet chic and will make a great addition to your jewelry collection. It has an adjustable closure to ensure a comfortable fit. Wear it with your favorite dress or skirt for a special occasion or any day of the week to add a touch of glamour to your look.',

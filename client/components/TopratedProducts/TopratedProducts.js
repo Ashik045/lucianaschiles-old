@@ -42,7 +42,7 @@ function TopratedProducts({ products }) {
                             spaceBetween: 50,
                         },
                     }}
-                    modules={[Pagination, Navigation, Autoplay]}
+                     modules={[Pagination, Navigation, Autoplay]}
                     className="mySwiper"
                 >
                     {products.map((product) => (

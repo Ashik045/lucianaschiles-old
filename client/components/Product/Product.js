@@ -15,7 +15,6 @@ function Product({ product, scale }) {
                     width={270}
                     alt="chiles product"
                     objectFit="cover"
-                    // layout="responsive"
                 />
             </Link>
             <Link href={`/products/${product._id}`}>

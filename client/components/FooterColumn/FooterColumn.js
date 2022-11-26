@@ -6,8 +6,8 @@ const FooterColumn = ({ FooterDetail, title }) => {
   return (
     <div className={styles.footer_col}>
             <h3>{title}</h3>
-            {FooterDetail.map((items) => (
-                <Link href={items.link}>
+            {FooterDetail.map((items, i) => (
+                <Link key={i} href={items.link}>
                     <p key={items.id}>{items.text}</p>
                 </Link>
             ))}

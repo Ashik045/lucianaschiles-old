@@ -27,3 +27,29 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .testimonial {
+    .testimonial_main {
+      .testimonial_div {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .testimonial {
+    .testimonial_main {
+      .testimonial_div {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+    }
+  }
+}

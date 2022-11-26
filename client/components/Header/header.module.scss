@@ -31,3 +31,23 @@
     }
   }
 }
+
+@media screen and (max-width: 576px) {
+  .header {
+    .header_main {
+      .slidee {
+        height: 350px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    .header_main {
+      .slidee {
+        height: 250px;
+      }
+    }
+  }
+}
