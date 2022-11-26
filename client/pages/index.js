@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Head from 'next/head';
 import BlogComponent from '../components/BlogComponent/BlogComponent';
+import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import Navbar from '../components/Navbar/Navbar';
 import Newsletter from '../components/Newsletter/Newsletter';
@@ -168,6 +169,7 @@ export default function Home({ products }) {
                 <Testimonial />
                 <BlogComponent blogs={blogs} />
                 <Newsletter />
+                <Footer />
             </main>
         </div>
     );

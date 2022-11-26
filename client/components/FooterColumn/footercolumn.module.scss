@@ -1,0 +1,12 @@
+.footer_col {
+  p {
+    color: rgb(109, 106, 106);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      text-decoration: underline;
+      color: #2a3990;
+    }
+  }
+}
