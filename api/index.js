@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 const app = express();
 
 // internal imports
-const projects = require('./routes/projects');
+const products = require('./routes/products');
 const blogs = require('./routes/blogs');
 
 // app setups
@@ -31,7 +31,7 @@ mongoose
     });
 
 // application routes
-app.use('/api/projects', projects);
+app.use('/api/products', products);
 app.use('/api/blogs', blogs);
 
 // default routes

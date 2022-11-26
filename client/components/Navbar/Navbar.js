@@ -19,7 +19,7 @@ function Navbar() {
             <div className={styles.navbar_main}>
                 <Link href="/">
                     <div className={styles.brand}>
-                        <h3>Chiles</h3>
+                        <h3>Lucianaschiles</h3>
                     </div>
                 </Link>
 
