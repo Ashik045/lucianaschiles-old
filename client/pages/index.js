@@ -165,7 +165,7 @@ export default function Home({ products }) {
             <main className="main">
                 <Navbar />
                 <Header />
-                <Products products={products} />
+                <Products products={products} title="PRODUCTS" />
                 <TopratedProducts products={products} />
                 <Testimonial />
                 <BlogComponent blogs={blogs} />
@@ -187,4 +187,4 @@ export async function getStaticProps() {
         products: products || null,
       },
     }
-}  
+};

@@ -5,10 +5,10 @@ import Product from '../Product/Product';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import styles from './products.module.scss';
 
-function Products({ products }) {
+function Products({ products, title }) {
     return (
         <div className={styles.products}>
-            <SectionHeader title="PRODUCTS" />
+            <SectionHeader title={title} />
             <div className={styles.products_main}>
                 <div className={styles.search}>
                     <h2>Search Here</h2>
