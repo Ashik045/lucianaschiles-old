@@ -57,6 +57,14 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
+
+      .no_product {
+        height: 500px;
+
+        p {
+          text-align: center;
+        }
+      }
     }
   }
 }

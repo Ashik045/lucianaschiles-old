@@ -14,10 +14,7 @@ import header4 from '../../images/header4.jpg';
 import styles from './header.module.scss';
 
 function Header() {
-    if (typeof window !== 'undefined') {
-        console.log(window.console.error);
-    }
-
+    
     return (
         <div className={styles.header}>
             <div className={styles.header_main}>
