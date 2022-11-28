@@ -41,13 +41,14 @@
         p {
           cursor: pointer;
           transition: all 0.2s ease;
+          color: black;
         }
 
         .active {
           //   font-weight: bold;
           padding-bottom: 4px;
-          color: #001253;
-          border-bottom: 2px solid #001253;
+          color: #2a3990;
+          border-bottom: 2px solid #2a3990;
         }
       }
 

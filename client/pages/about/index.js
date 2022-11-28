@@ -1,14 +1,14 @@
 import React from 'react'
 import Footer from '../../components/Footer/Footer'
 import Navbar from '../../components/Navbar/Navbar'
-import styles from '../../styles/cartpage.module.scss'
+import styles from '../../styles/aboutuspage.module.scss'
 
 const index = () => {
   return (
-    <div className={styles.cart_page}>
+    <div className={styles.aboutus_page}>
         <Navbar />
-            <div className={styles.cart_page_main}>
-                <h2>Add to Cart page(updating)</h2>
+            <div className={styles.aboutus_page_main}>
+                <h2>About us page(updating)</h2>
             </div>
         <Footer />
     </div>

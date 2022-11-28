@@ -6,26 +6,12 @@ const blogSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        subtitle1: {
-            type: String,
-            required: true,
-        },
-        subtitle2: {
-            type: String,
-            required: true,
-        },
+
         desc: {
-            type: String,
+            type: Array,
             required: true,
         },
-        subdesc1: {
-            type: String,
-            required: true,
-        },
-        subdesc2: {
-            type: String,
-            required: true,
-        },
+
         image: {
             type: String,
             required: true,

@@ -53,7 +53,7 @@ function Footer() {
                 <div className={styles.first_col}>
                     <div className={styles.first_col_brand}>
                         {/* <Image src={brand} alt="footer-brand" height={35} width={35} /> */}
-                        <h2>Lucianaschiles</h2>
+                        <h2 style={{color: '#32408f'}}>Lucianaschiles</h2>
                     </div>
                     <p>
                         We help buisnesses maximize their online persence with a personalized
@@ -63,7 +63,7 @@ function Footer() {
                 </div>
 
                 <div className={styles.second_col}>
-                    <h3>Contact</h3>
+                    <h3 style={{color: 'black'}}>Contact</h3>
                     <p>Mexico, US</p>
                     <p>+880000000000</p>
                     <p className={styles.second_col_email}>Office@merchantquickfix.com</p>

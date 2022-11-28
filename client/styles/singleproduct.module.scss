@@ -44,6 +44,7 @@
             .slide_icon {
               z-index: 1;
               cursor: pointer;
+              color: black;
             }
           }
         }
@@ -82,11 +83,14 @@
 
         .product_quantity {
           width: 80%;
-          padding: 4px 5px;
           font-size: 16px;
           display: block;
           border-radius: 5px;
           border: 2px solid rgb(95, 95, 95);
+          background-color: rgb(153, 152, 152);
+          padding: 7px 10px;
+          color: white;
+          border: none;
         }
 
         .product_price {
@@ -95,7 +99,7 @@
         }
 
         button {
-          padding: 10px 15px;
+          padding: 12px 15px;
           background-color: #2a3990;
           border: none;
           color: white;
@@ -131,7 +135,7 @@
         line-height: 27px;
         padding-bottom: 10px;
         font-family: "Poppins", sans-serif;
-        color: black;
+        color: rgb(66, 65, 65);
       }
     }
 
@@ -145,11 +149,14 @@
 
       .product_quantity {
         width: 80%;
-        padding: 4px 5px;
         font-size: 16px;
         display: block;
         border-radius: 5px;
         border: 2px solid rgb(95, 95, 95);
+        background-color: rgb(153, 152, 152);
+        padding: 7px 10px;
+        color: white;
+        border: none;
       }
 
       .product_price {
@@ -158,7 +165,7 @@
       }
 
       button {
-        padding: 10px 15px;
+        padding: 12px 15px;
         background-color: #2a3990;
         border: none;
         color: white;

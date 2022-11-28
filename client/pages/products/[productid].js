@@ -6,24 +6,11 @@ import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import styles from '../../styles/singleproduct.module.scss';
 
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    width: "15rem",
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
-
-const index = ({product}) => {
+const productDetail = ({product}) => {
     const [sliderNum, setSliderNum] = useState(0)
     const [quantity, setQuantity] = useState(1)
 
-    const lastImg = product.images.length - 1;
+    const lastImg = product.images?.length - 1;
     const handleClick = (e) => {
         let newSliderNum;
         if (e === "inc") {
@@ -34,6 +21,19 @@ const index = ({product}) => {
 
         setSliderNum(newSliderNum)
     }
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        width: "15rem",
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
 
     const addToCart = () => {
         console.log(quantity);
@@ -50,7 +50,8 @@ return (
                 <div className={styles.detail_page_left}>
                 <div className={styles.detail_page_slider}>
                     <div className={styles.slider_main}>
-                        <Image src={product.images[sliderNum]} width={500} height={500} alt="product img" className={styles.slider_main_imgg} />
+                        <Image src={product?.images[sliderNum]} width={500} height={500} alt="product img" className={styles.slider_main_imgg} />
+                        
                         <div className={styles.slider_btnss}>
                             <FaChevronLeft size={35} className={styles.slide_icon} onClick={() => handleClick("inc")} />
                             <FaChevronRight size={35} className={styles.slide_icon} onClick={() => handleClick("dec")} />
@@ -58,7 +59,7 @@ return (
                     </div>
 
                     <div className={styles.slider_btm_imgs}>
-                        {product.images.map((img, i) => {
+                        {product.images?.map((img, i) => {
                         return <Image key={i} src={img} onClick={() => setSliderNum(i)} alt="product img" className={styles.slider_btm_img} height={50} width={70} />
                         })}
                     </div>
@@ -104,9 +105,9 @@ return (
         <Footer />
     </div>
 );
-                    }
+}
 
-export default index;
+export default productDetail;
 
 export async function getStaticPaths() {
     const res = await fetch('https://lucianaschiles-backend.onrender.com/api/products/all')
@@ -122,7 +123,7 @@ export async function getStaticPaths() {
     
     return {
         paths,
-        fallback: true,
+        fallback: false,
     }
   }  
 

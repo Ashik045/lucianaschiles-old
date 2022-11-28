@@ -20,7 +20,7 @@ function Blog({ blog }) {
             <Link href={`/blogs/${blog._id}`}>
                 <h2>{blog.title}</h2>
             </Link>
-            <p>{blog.desc}</p>
+            <p>{blog.desc[0]}</p>
         </div>
     );
 }

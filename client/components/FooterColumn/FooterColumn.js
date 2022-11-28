@@ -5,7 +5,7 @@ import styles from './footercolumn.module.scss'
 const FooterColumn = ({ FooterDetail, title }) => {
   return (
     <div className={styles.footer_col}>
-            <h3>{title}</h3>
+            <h3 style={{color: 'black'}}>{title}</h3>
             {FooterDetail.map((items, i) => (
                 <Link key={i} href={items.link}>
                     <p key={items.id}>{items.text}</p>
