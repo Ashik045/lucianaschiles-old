@@ -28,7 +28,7 @@ const blogDetails = ({blog}) => {
 export default blogDetails
 
 export async function getStaticPaths() {
-    const res = await fetch('http://localhost:4000/api/blogs/all')
+    const res = await fetch('https://lucianaschiles-backend.onrender.com/api/blogs/all')
   
     const data = await res.json();
     const blogs = data.message;
@@ -48,7 +48,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     const {params} = context;
 
-    const res = await fetch(`http://localhost:4000/api/blogs/${params.blogid}`)
+    const res = await fetch(`https://lucianaschiles-backend.onrender.com/api/blogs/${params.blogid}`)
   
     const data = await res.json();
   

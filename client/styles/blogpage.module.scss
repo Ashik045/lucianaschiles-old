@@ -19,3 +19,31 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .blog_page {
+    .blog_page_main {
+      .blogss {
+        display: grid;
+        grid-template-columns: 49% 49%;
+        justify-content: space-between;
+        gap: 15px;
+        align-items: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .blog_page {
+    .blog_page_main {
+      .blogss {
+        display: grid;
+        grid-template-columns: 100%;
+        justify-content: center;
+        gap: 15px;
+        align-items: center;
+      }
+    }
+  }
+}

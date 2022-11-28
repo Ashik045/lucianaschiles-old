@@ -25,7 +25,7 @@ const index = ({blogs}) => {
 export default index
 
 export async function getStaticProps() {
-    const res = await fetch('http://localhost:4000/api/blogs/all')
+    const res = await fetch('https://lucianaschiles-backend.onrender.com/api/blogs/all')
   
     const data = await res.json();
   
