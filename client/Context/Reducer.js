@@ -4,14 +4,21 @@ const Reducer =  (state, action) => {
             return {
                 ...state,
                 loading: false,
-                list: [action.payload, ...state.list],
+                list: [ action.payload , ...state.list],
+                error: false,
+            };
+        case 'UPDATE_QUANTITY':
+            return {
+                ...state,
+                loading: false,
+                list: action.payload,
                 error: false,
             };
         case 'REMOVE_FROM_LIST':
             return {
                 ...state,
                 loading: false,
-                list: state.list.filter((item) => item.id !== action.payload),
+                list: state.list.filter((item) => item._id !== action.payload),
                 error: false,
             };
         default: 

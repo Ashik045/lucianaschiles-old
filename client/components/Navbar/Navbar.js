@@ -1,14 +1,20 @@
 /* eslint-disable no-unused-vars */
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaShoppingCart, FaStream, FaTimes } from 'react-icons/fa';
 import styles from './navbar.module.scss';
 
 function Navbar() {
     const router = useRouter();
-    const [item, setItem] = useState(2);
     const [toggler, setToggler] = useState(false);
+    const [cartItem, setCartItem] = useState(0);
+
+    useEffect(() => {
+        const items = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('productlist'))
+        setCartItem(items?.length)
+        console.log(cartItem);
+    }, [cartItem])
 
     const handleToggle = () => {
         setToggler(!toggler);
@@ -54,7 +60,7 @@ function Navbar() {
                     <Link href="/cart">
                         <div className={styles.cart}>
                             <FaShoppingCart className={styles.cart_icon} />
-                            <span>{item}</span>
+                            <span>{cartItem || 0}</span>
                         </div>
                     </Link>
                 </div>

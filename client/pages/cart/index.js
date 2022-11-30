@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import CartsProduct from '../../components/CartsProduct/CartsProduct'
 import Footer from '../../components/Footer/Footer'
@@ -9,23 +10,35 @@ import styles from '../../styles/cartpage.module.scss'
 const index = () => {
   const [cartItem, setCartItem] = useState([]);
   const [totalPrice, settotalPrice] = useState(0);
-  // const [subTotal, setSubTotal] = useState(0);
-
-  const subtotal = cartItem.map((item, i) => {
-    let total;
-    total = item.price + item.price
-    console.log(total);
-  })
-
-
-
+  const [subTotal, setSubTotal] = useState(0);
+  const location = useRouter()
+  
+  // get all the products from the localstorage
   useEffect(() => {
-    const items = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('productlist'))
-    setCartItem(items)
-  }, [])
+    const fetchData = async () => {
+      const items = await typeof window !== 'undefined' && JSON.parse(localStorage.getItem('productlist'))
+      setCartItem(items)
+      }
+      fetchData()
 
+      const stotal = cartItem?.map((item, i) => {
+
+        return item[i].price * item[i].quantity
+        
+      })
+
+      console.log(stotal);
+  }, [])
+  
+  // the function checks the duplicates items. But no need ot use it for now. I have checked if the product already exists or not, on the product detail page.
+  
+  // const filteredProduct = cartItem.filter((value, index) => { 
+  //   return cartItem.indexOf(value) === index;
+  // });
+
+  // Need to update
   const handleCheckout = () => {
-    console.log(totalPrice);
+    // console.log(totalPrice);
   }
 
   return (
@@ -38,7 +51,7 @@ const index = () => {
         <Navbar />
             <div className={styles.cart_page_main}>
               <div className={styles.cart_page_main_cart}>
-                  {cartItem.length === 0 ? (<div className={styles.cart_page_empty}>
+                  {cartItem.length === 0 ? ( <div className={styles.cart_page_empty}>
                       <h3>Your cart is empty.</h3>
                       <p>Find Products <Link href="/products" style={{textDecoration: 'underline'}}>Here.</Link></p>
                   </div>) : cartItem.map((item) => {
@@ -59,7 +72,7 @@ const index = () => {
                   </div>
                   <div className={styles.checkout_detail}>
                     <p>Subtotal </p>
-                    <p>USD {subtotal}</p>
+                    <p>USD {subTotal}</p>
                   </div>
                   <div className={styles.checkout_detail}>
                     <p>Shipping Price </p>

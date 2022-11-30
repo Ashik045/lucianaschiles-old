@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import React, { useContext, useState } from 'react';
+import Router from 'next/router';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaCheckDouble, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import Footer from '../../components/Footer/Footer';
@@ -11,10 +12,21 @@ import styles from '../../styles/singleproduct.module.scss';
 const productDetail = ({product}) => {
     const [sliderNum, setSliderNum] = useState(0)
     const [quantity, setQuantity] = useState(1)
+    const [cartItem, setCartItem] = useState([]);
+    const [onCart, setOnCart] = useState(false);
 
-    // state 
     const {state, dispatch} = useContext(CartContext);
+    
+    // find the product from localstorage and check if it exists
+    useEffect(() => {
+        const items = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('productlist'))
+        setCartItem(items)
+    }, [])
 
+    // check if the product is already in cart
+    const isTrueFalse = cartItem.find((pr) => pr._id === product._id)
+
+    // slide between products images
     const lastImg = product.images?.length - 1;
     const handleClick = (e) => {
         let newSliderNum;
@@ -41,14 +53,19 @@ const productDetail = ({product}) => {
       })
 
     const addToCart = () => {
-
+        const mainProduct = {
+            ...product,
+            quantity: quantity,
+        }
         try {
-            dispatch({type: 'ADD_TO_LIST', payload: product})
+            dispatch({type: 'ADD_TO_LIST', payload: mainProduct})
 
         Toast.fire({
             icon: 'success',
             title: 'Added to Cart',
           })
+
+          Router.push('/cart')
         } catch (error) {
             console.log(error);
         }
@@ -109,7 +126,8 @@ return (
                     <span style={{fontSize: "14px", color: 'rgb(66, 65, 65)'}}>Local taxes included (where applicable)</span>
                     <p style={{color: 'black', marginTop: '40px'}}>Quantity</p>
                     <input type="number" value={quantity} min={1} max={20} onChange={(e) => setQuantity(e.target.value)} className={styles.product_quantity}/>
-                    <button onClick={addToCart} >Add to Cart</button>
+                    
+                    <button onClick={addToCart} disabled={isTrueFalse} style={{cursor: isTrueFalse ? 'not-allowed' : 'pointer'}}>{isTrueFalse ? "Added to Cart" : "Add to Cart"}</button>
 
                     <div className={styles.highlight}>
                         <h3>Highlights</h3>

@@ -3,6 +3,12 @@ export const ADDTOLIST = (item) => ({
     payload: item
 })
 
+export const UPDATEQUANTITY = (value) => ({
+    type: 'UPDATE_QUANTITY',
+    payload: value
+})
+
+
 export const REMOVEFROMLIST = (id) => ({
     type: 'REMOVE_FROM_LIST',
     payload: id
