@@ -110,7 +110,7 @@ const index = () => {
 
   // Need to update
   const handleCheckout = () => {
-    // console.log(totalPrice);
+    console.log(totalPrice);
   }
 
   return (
