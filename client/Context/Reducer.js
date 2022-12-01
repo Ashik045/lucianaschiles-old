@@ -18,7 +18,7 @@ const Reducer =  (state, action) => {
             return {
                 ...state,
                 loading: false,
-                list: state.list.filter((item) => item._id !== action.payload),
+                list: state.list.filter((item) => item.id !== action.payload),
                 error: false,
             };
         default: 

@@ -13,7 +13,7 @@ function Navbar() {
     useEffect(() => {
         const items = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('productlist'))
         setCartItem(items?.length)
-        console.log(cartItem);
+        // console.log(cartItem);
     }, [cartItem])
 
     const handleToggle = () => {

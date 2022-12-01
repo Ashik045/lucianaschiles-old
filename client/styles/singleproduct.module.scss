@@ -81,15 +81,15 @@
           color: rgb(59, 59, 59);
         }
 
-        .product_quantity {
+        .product_quantity2 {
           width: 80%;
           font-size: 16px;
           display: block;
           border-radius: 5px;
-          border: 2px solid rgb(95, 95, 95);
-          background-color: rgb(153, 152, 152);
+          border: 2px solid #eff5f5;
+          background-color: #eff5f5;
+          color: black;
           padding: 7px 10px;
-          color: white;
           border: none;
         }
 
@@ -145,16 +145,15 @@
         font-family: "Fira Sans", sans-serif;
         color: rgb(59, 59, 59);
       }
-
-      .product_quantity {
+      .product_quantity2 {
         width: 80%;
         font-size: 16px;
         display: block;
         border-radius: 5px;
-        border: 2px solid rgb(95, 95, 95);
-        background-color: rgb(153, 152, 152);
+        border: 2px solid #eff5f5;
+        background-color: #eff5f5;
+        color: black;
         padding: 7px 10px;
-        color: white;
         border: none;
       }
 
@@ -297,8 +296,10 @@
 
         .res_priceee {
           display: block;
-          .product_quantity {
-            width: 100%;
+          .product_quantity2 {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .product_price {

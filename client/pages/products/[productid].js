@@ -53,10 +53,14 @@ const productDetail = ({product}) => {
       })
 
     const addToCart = () => {
+        const date = new Date().getMilliseconds()
+        console.log(date);
         const mainProduct = {
             ...product,
+            id: product._id + '-' + date,
             quantity: quantity,
         }
+
         try {
             dispatch({type: 'ADD_TO_LIST', payload: mainProduct})
 
@@ -104,8 +108,31 @@ return (
                     <h2 className={styles.product_price}>USD {product.price}</h2>
                     <span style={{fontSize: "14px", color: 'rgb(66, 65, 65)'}}>Local taxes included (where applicable)</span>
                     <p style={{color: 'black', marginTop: '40px'}}>Quantity</p>
-                    <input type="number" value={quantity} min={1} max={20} onChange={(e) => setQuantity(e.target.value)} className={styles.product_quantity}/>
-                    <button onClick={addToCart} >Add to Cart</button>
+                    {/* <input type="number" value={quantity} min={1} max={20} onChange={(e) => setQuantity(e.target.value)} className={styles.product_quantity}/> */}
+                    <select value={quantity} onChange={(e) => setQuantity(e.target.value)} className={styles.product_quantity2}>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                    
+                    <button onClick={addToCart} disabled={isTrueFalse} style={{cursor: isTrueFalse ? 'not-allowed' : 'pointer'}}>{isTrueFalse ? "Added to Cart" : "Add to Cart"}</button>
 
                     <div className={styles.highlight}>
                         <h3>Highlights</h3>
@@ -125,7 +152,20 @@ return (
                     <h2 className={styles.product_price}>USD {product.price}</h2>
                     <span style={{fontSize: "14px", color: 'rgb(66, 65, 65)'}}>Local taxes included (where applicable)</span>
                     <p style={{color: 'black', marginTop: '40px'}}>Quantity</p>
-                    <input type="number" value={quantity} min={1} max={20} onChange={(e) => setQuantity(e.target.value)} className={styles.product_quantity}/>
+                    
+                    {/* <input type="number" value={quantity} min={1} max={20} onChange={(e) => setQuantity(e.target.value)} className={styles.product_quantity}/> */}
+                    <select value={quantity} onChange={(e) => setQuantity(e.target.value)} className={styles.product_quantity2}>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
                     
                     <button onClick={addToCart} disabled={isTrueFalse} style={{cursor: isTrueFalse ? 'not-allowed' : 'pointer'}}>{isTrueFalse ? "Added to Cart" : "Add to Cart"}</button>
 
