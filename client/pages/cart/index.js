@@ -1,3 +1,4 @@
+import { loadStripe } from '@stripe/stripe-js'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -44,21 +45,19 @@ const index = () => {
 
   // filter the product price and and calculate the total price
   useEffect(() => {
-  const stotal = cartItem?.map((item, i) => {
-    // console.log(item[0]);
-    return (item.price * item.quantity).toFixed(2)
-  })
+    const stotal = cartItem?.map((item, i) => {
+      // console.log(item[0]);
+      return (item.price * item.quantity).toFixed(2)
+    })
 
-  const subTotalVal = stotal.reduce((prevValue, currValue) => {
-    return (Number(prevValue) + Number(currValue)).toFixed(2);
-  }, 0)
-  setSubTotal(subTotalVal)
-  // console.log(subTotalVal);
+    const subTotalVal = stotal.reduce((prevValue, currValue) => {
+      return (Number(prevValue) + Number(currValue)).toFixed(2);
+    }, 0)
+    setSubTotal(subTotalVal)
+    // console.log(subTotalVal);
 
-  setTotalPrice(Number(subTotal) + Number(shippingPrice))
+    setTotalPrice(Number(subTotal) + Number(shippingPrice))
 })
-
-
   
   // the function checks the duplicates items. But no need ot use it for now. I have checked if the product already exists or not, on the product detail page.
   
@@ -108,9 +107,26 @@ const index = () => {
       }
   }
 
+  const stripePromise = loadStripe('pk_live_51MABrQJ6VRzBdJcx7DBXhLIZnq3exYHa1RhLSDFye3a0PK8d7jEGinVsBn40zvDgW9YKSYGfmjlxOWxxO9YcTv5W00k2kXeKgj');
+
   // Need to update
-  const handleCheckout = () => {
-    console.log(totalPrice);
+  const handleCheckout = async () => {
+    
+    try {
+      const stripe = await stripePromise;
+
+      const res = await makeRequest.post("/orders", {
+        cartItem, // products
+      });
+
+      await stripe.redirectToCheckout({
+        sessionId: res.data.stripeSession.id,
+      })
+      
+      console.log(totalPrice);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
