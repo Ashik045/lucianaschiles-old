@@ -1,4 +1,6 @@
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,7 +19,11 @@ const index = () => {
   const [quantitty, setQuantitty] = useState(1);
   const [subTotal, setSubTotal] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const location = useRouter()
+  const [success, setSuccess] = useState(false);
+  const stripe = useStripe()
+  const elements = useElements();
+
+  const location = useRouter();
   // const [quantitty, setQuantitty] = useState(item.quantity || 1);
   const {dispatch} = useContext(CartContext);
 
@@ -111,23 +117,49 @@ const index = () => {
 
   // Need to update
   const handleCheckout = async () => {
-    
-    try {
-      const stripe = await stripePromise;
 
-      const res = await makeRequest.post("/orders", {
-        cartItem, // products
-      });
+    cosnt {error, paymentMethod} = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement)
+    })
 
-      await stripe.redirectToCheckout({
-        sessionId: res.data.stripeSession.id,
-      })
-      
-      console.log(totalPrice);
-    } catch (error) {
-      console.log(error);
+    if (!error) {
+      try {
+        const {id} = paymentMethod;
+        const response = await axios.post("http://localhost:4000/payment", {
+          amount: totalPrice,
+          id: id,
+        })
+  
+        if (response.data.success) {
+          console.log("Succcessful payment");
+          setSuccess(true)
+        }
+      } catch (error) {
+        console.log("Error", error);
+      }
+    } else {
+      console.log(error.message)
     }
+    
+    // try {
+    //   const stripe = await stripePromise;
+
+    //   const res = await makeRequest.post("/orders", {
+    //     cartItem, // products
+    //   });
+
+    //   await stripe.redirectToCheckout({
+    //     sessionId: res.data.stripeSession.id,
+    //   })
+      
+    //   console.log(totalPrice);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
+
+  
 
   return (
     <div className={styles.cart_page}>
