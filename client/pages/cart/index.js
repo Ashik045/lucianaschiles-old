@@ -1,6 +1,4 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
-import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -20,8 +18,6 @@ const index = () => {
   const [subTotal, setSubTotal] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [success, setSuccess] = useState(false);
-  const stripe = useStripe()
-  const elements = useElements();
 
   const location = useRouter();
   // const [quantitty, setQuantitty] = useState(item.quantity || 1);
@@ -117,29 +113,22 @@ const index = () => {
 
   // Need to update
   const handleCheckout = async () => {
-
-    cosnt {error, paymentMethod} = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement)
-    })
-
-    if (!error) {
-      try {
-        const {id} = paymentMethod;
-        const response = await axios.post("http://localhost:4000/payment", {
-          amount: totalPrice,
-          id: id,
-        })
-  
-        if (response.data.success) {
-          console.log("Succcessful payment");
-          setSuccess(true)
+    try {
+      await fetch('http://localhost:4000/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({items: cartItem})
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        if (response.url) {
+          window.location.assign(response.url) // after successful forwarding user to stripe
         }
-      } catch (error) {
-        console.log("Error", error);
-      }
-    } else {
-      console.log(error.message)
+      })
+    } catch (error) {
+      console.log(error);
     }
     
     // try {

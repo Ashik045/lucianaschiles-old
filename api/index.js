@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 // import modules
 const express = require('express');
 const mongoose = require('mongoose');
@@ -17,6 +18,7 @@ const stripe = require('stripe')(process.env.STRIPE_KEY);
 // internal imports
 const products = require('./routes/products');
 const blogs = require('./routes/blogs');
+const stripeRoute = require('./routes/stripeRoute');
 // database connection
 mongoose
     .connect(process.env.MONGODB_CONNECTION_STRING, {
@@ -33,6 +35,7 @@ mongoose
 // application routes
 app.use('/api/products', products);
 app.use('/api/blogs', blogs);
+app.use('/api', stripeRoute);
 
 // default routes
 app.use('/', (req, res) => {
@@ -42,22 +45,31 @@ app.use('/', (req, res) => {
 });
 
 // stripe
-app.post('/create-checkout-session', async (req, res) => {
-    const session = await stripe.checkout.sessions.create({
-        line_items: [
-            {
-                // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                price: '{{PRICE_ID}}',
-                quantity: 1,
-            },
-        ],
-        mode: 'payment',
-        success_url: `${process.env.APP_DOMAIN}?success=true`,
-        cancel_url: `${process.env.APP_DOMAIN}?canceled=true`,
-    });
+// app.post('/api/checkout', async (req, res) => {
+//     console.log(req.body);
+//     // format data and send to the server
+//     const { items } = req.body;
+//     const lineItems = [];
+//     items.forEach((item) => {
+//         lineItems.push({
+//             price: item.id,
+//             quantity: items.quantity,
+//         });
+//     });
 
-    res.redirect(303, session.url);
-});
+//     const session = await stripe.checkout.sessions.create({
+//         line_items: lineItems,
+//         mode: 'payment',
+//         success_url: `${process.env.APP_DOMAIN}?success=true`,
+//         cancel_url: `${process.env.APP_DOMAIN}?canceled=true`,
+//     });
+
+//     res.send(
+//         JSON.stringify({
+//             url: session.url,
+//         })
+//     );
+// });
 
 // error handlers
 app.use((err, req, res, next) => {
