@@ -29,6 +29,9 @@ const productSchema = mongoose.Schema(
             type: Array,
             required: true,
         },
+        pid: {
+            type: String,
+        },
     },
     { timestamps: true },
 );

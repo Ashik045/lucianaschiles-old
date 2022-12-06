@@ -148,8 +148,6 @@ const index = () => {
     // }
   }
 
-  
-
   return (
     <div className={styles.cart_page}>
     <Head>
