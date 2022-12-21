@@ -116,7 +116,7 @@ const index = () => {
   const handleCheckout = async () => {
     try {
       setLoading(true)
-      await fetch('http://localhost:4000/api/checkout', {
+      await fetch('https://lucianaschiles-backend.onrender.com/api/checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
