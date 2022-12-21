@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 dotenv.config();
 
-// stripe module
+// stripe modul
 const stripe = require('stripe')(process.env.STRIPE_KEY);
 // internal imports
 const products = require('./routes/products');

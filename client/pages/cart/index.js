@@ -18,6 +18,7 @@ const index = () => {
   const [subTotal, setSubTotal] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const location = useRouter();
   // const [quantitty, setQuantitty] = useState(item.quantity || 1);
@@ -109,11 +110,12 @@ const index = () => {
       }
   }
 
-  const stripePromise = loadStripe('pk_live_51MABrQJ6VRzBdJcx7DBXhLIZnq3exYHa1RhLSDFye3a0PK8d7jEGinVsBn40zvDgW9YKSYGfmjlxOWxxO9YcTv5W00k2kXeKgj');
+  const stripePromise = loadStripe('pk_live_vWuEWltsTn2in7fvcYUwvkfx');
 
   // Need to update
   const handleCheckout = async () => {
     try {
+      setLoading(true)
       await fetch('http://localhost:4000/api/checkout', {
         method: 'POST',
         headers: {
@@ -127,8 +129,10 @@ const index = () => {
           window.location.assign(response.url) // after successful forwarding user to stripe
         }
       })
+      setLoading(false)
     } catch (error) {
       console.log(error);
+      setLoading(false)
     }
     
     // try {
@@ -208,7 +212,7 @@ const index = () => {
                     <span>USD {totalPrice}</span>
                   </div>
 
-                  <button type='button' onClick={handleCheckout}>Checkout USD {totalPrice}</button>
+                  <button type='button' onClick={handleCheckout} style={{cursor: loading ? 'not-allowed' : 'pointer'}}>{loading ? 'Loading..' : `Checkout USD ${totalPrice}`} </button>
               </div>}
             </div>
         <Footer />
