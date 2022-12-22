@@ -6,5 +6,5 @@
 ```sh
 git clone https://github.com/Ashik045/lucianaschiles.git
 cd lucianaschiles
-npm install
+ls
 ```
