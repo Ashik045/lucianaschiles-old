@@ -34,6 +34,7 @@ export default function Home({ products, blogs }) {
     );
 }
 
+// fetch all the necessary items
 export async function getStaticProps() {
     const res = await fetch('https://lucianaschiles-backend.onrender.com/api/products/all')
     const res2 = await fetch('https://lucianaschiles-backend.onrender.com/api/blogs/all')
